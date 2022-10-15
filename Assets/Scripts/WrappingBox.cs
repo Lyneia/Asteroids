@@ -18,26 +18,30 @@ public class WrappingBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkPosition();
+    }
+
+    /// <summary>
+    /// Check if gameobject is inside WrappingBox
+    /// </summary>
+    public void checkPosition()
+    {
         if (transform.position.x < xMin)
         {
             transform.position = new Vector3(xMax, transform.position.y, transform.position.z);
-            //transform.position.Set(xMax, transform.position.y, transform.position.z);
         }
         if (transform.position.x > xMax)
         {
             transform.position = new Vector3(xMin, transform.position.y, transform.position.z);
-            //transform.position.Set(xMin, transform.position.y, transform.position.z);
         }
 
         if (transform.position.y < yMin)
         {
             transform.position = new Vector3(transform.position.x, yMax, transform.position.z);
-            //transform.position.Set(transform.position.x, yMax, transform.position.z);
         }
         if (transform.position.y > yMax)
         {
             transform.position = new Vector3(transform.position.x, yMin, transform.position.z);
-            //transform.position.Set(transform.position.x, yMin, transform.position.z);
         }
     }
 }

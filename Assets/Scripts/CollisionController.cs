@@ -9,6 +9,10 @@ public class CollisionController : MonoBehaviour
     public GameObject player;
     public GameObject[] missiles;
 
+
+    /// <summary>
+    /// List of damageable gameobject such as player, asteroids and missiles.
+    /// </summary>
     private List<GameObject> damageableObjects;
 
     // Start is called before the first frame update

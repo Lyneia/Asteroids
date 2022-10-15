@@ -8,6 +8,9 @@ public class Asteroids : MonoBehaviour
 
     public AsteroidsSpawner asteroidSpawner;
 
+    /// <summary>
+    /// Movement direction for the asteroid
+    /// </summary>
     Vector3 direction;
 
     public float movementSpeed = 0.02f;
@@ -18,6 +21,10 @@ public class Asteroids : MonoBehaviour
     public float maxRotationSpeed = 2f;
 
     public float immunityTime = 0;
+
+    /// <summary>
+    /// Immunity duration used to move asteroids without collinding instantly after spawn
+    /// </summary>
     public float immunityDuration = 5f;
 
     // Start is called before the first frame update
@@ -53,22 +60,23 @@ public class Asteroids : MonoBehaviour
         transform.position += direction * Time.deltaTime * movementSpeed;
         transform.Rotate(direction * (rotationSpeed * Time.deltaTime));
 
-        immunityTime = immunityTime + Time.deltaTime;
+        if (immunityTime < immunityDuration)
+        {
+            immunityTime = immunityTime + Time.deltaTime;
+        }
     }
 
+    /// <summary>
+    /// Method called by CollisionController when one happen
+    /// </summary>
     public void onCollide()
     {
         if (asteroidType != EnumList.AsteroidsType.Minor)
         {
-            CreateSplit();
+            asteroidSpawner.splitAsteroid(asteroidType, transform.position);
         }
 
         Destroy(this.gameObject);
         
-    }
-
-    public void CreateSplit()
-    {
-        asteroidSpawner.splitAsteroid(asteroidType, transform.position);
     }
 }

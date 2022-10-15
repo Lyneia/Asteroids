@@ -15,6 +15,9 @@ public class AsteroidsSpawner : MonoBehaviour
     public float yMin = -28f;
     public float yMax = 28f;
 
+    /// <summary>
+    /// Radius distance used when splitting asteroid
+    /// </summary>
     public float distanceFromPreviousAsteroid = 14f;
 
     // Start is called before the first frame update
@@ -32,7 +35,9 @@ public class AsteroidsSpawner : MonoBehaviour
     public void splitAsteroid(EnumList.AsteroidsType previousType, Vector3 position)
     {
         Vector3 vectInCircle = Random.insideUnitCircle * distanceFromPreviousAsteroid;
+        // Position for first asteroid spawn
         Vector3 pos = position + vectInCircle;
+        // Second asteroid position
         Vector3 pos2 = position - vectInCircle;
 
         GameObject a = Instantiate(prefabs[Random.Range(0/*int*/, prefabs.Length/*int*/)], pos, Quaternion.identity);
@@ -50,6 +55,9 @@ public class AsteroidsSpawner : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Spawn asteroid inside the wrapping box. Randomize prefab and asteroid size.
+    /// </summary>
     public void Spawn()
     {
         for (int i = 0; i < amountPerSpawn; i++)
