@@ -14,6 +14,7 @@ The game can be improve with a few thing:
 - If we don't use Physics, use quadtree to improve collision management (less collision to check each update)
 - Make the game resizeable
 - Improve code management
+- Get Users feedback and adapt what's needed
 
 ## Credits
 
