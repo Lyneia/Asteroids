@@ -19,7 +19,7 @@ The game can be improve with a few thing:
 ## Credits
 
 ### Assets
-Most of the assets belong to Unity Technology, there were given as example for an old tutorial.
+Most of the assets belong to Unity Technology, there were given as example for an old tutorial. (Particle systems weren't made by me)
 
 ### Sounds
 In Game music by Anthox Colaboy : https://soundcloud.com/Anthox-colaboy
