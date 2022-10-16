@@ -3,7 +3,7 @@ A Unity3D game made by Lyneia as work test for Beyond Frames & Cortopia.
 
 ## Description
 
-The game is based on Asteroids from 1979 with simplified rules.
+The game is based on Asteroids from 1979 with simplified rules and "modern" visuals.
 
 ![Menu](./asteroidScoreboard.png)
 ![Game](./asteroidGameplay.png)
