@@ -9,7 +9,6 @@ public class CollisionController : MonoBehaviour
     private GameObject player;
     private GameObject[] missiles;
 
-
     /// <summary>
     /// List of damageable gameobject such as player, asteroids and missiles.
     /// </summary>

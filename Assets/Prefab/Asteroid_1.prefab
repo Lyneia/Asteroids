@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidType: 2
   asteroidSpawner: {fileID: 0}
+  explosionAsteroidPrefab: {fileID: 100004, guid: d1b675e9d85fc2947868e0b63d2d2e6c, type: 3}
   movementSpeed: 0.02
   minMovementSpeed: 5
   maxMovementSpeed: 15

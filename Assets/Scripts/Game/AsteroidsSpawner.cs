@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class AsteroidsSpawner : MonoBehaviour
 {
+    public GameObject player;
 
     public GameObject[] prefabs;
 
     public float spawnRate = 1f;
     public int amountAsteroidsPerSpawn = 1;
 
-
     /// <summary>
     /// Radius distance used when splitting asteroid
     /// </summary>
     public float distanceFromPreviousAsteroid = 14f;
+    public float distanceFromPlayer = 14f;
 
     /// <summary>
     /// Maximum number of asteroid spawned at the same time to prevent overcharged
@@ -31,9 +32,15 @@ public class AsteroidsSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Spawn 1 more asteroid every 2 minutes
+        amountAsteroidsPerSpawn = 1 + (int)(Time.timeSinceLevelLoad / (2 * 60));
     }
 
+    /// <summary>
+    /// Instantiate 2 new asteroid close to a position (previous asteroid location)
+    /// </summary>
+    /// <param name="previousType"></param>
+    /// <param name="position"></param>
     public void splitAsteroid(EnumList.AsteroidsType previousType, Vector3 position)
     {
         if (numberOfAsteroid <= maximumNumberOfAsteroid - 2)
@@ -61,7 +68,7 @@ public class AsteroidsSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Spawn asteroid inside the wrapping box. Randomize prefab and asteroid size.
+    /// Spawn asteroids inside the wrapping box. Randomize prefab and asteroid size.
     /// </summary>
     public void Spawn()
     {
@@ -69,7 +76,11 @@ public class AsteroidsSpawner : MonoBehaviour
         {
             for (int i = 0; i < amountAsteroidsPerSpawn; i++)
             {
-                Vector3 spawnPoint = WrappingBox.createSpawnPointInWrappingBox();
+                Vector3 spawnPoint;
+                do
+                {
+                    spawnPoint = WrappingBox.createSpawnPointInWrappingBox();
+                } while (Vector3.Distance(spawnPoint, player.transform.position) < distanceFromPlayer); 
                 GameObject a = Instantiate(prefabs[Random.Range(0/*int*/, prefabs.Length/*int*/)], spawnPoint, Quaternion.identity);
                 a.GetComponent<Asteroid>().asteroidType = (EnumList.AsteroidsType)Random.Range(0/*int*/, prefabs.Length/*int*/);
             }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject explosionPlayerPrefab;
+
     public float movementSpeed = 1f;
     public float rotationSpeed = 10f;
 
@@ -89,6 +91,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void onCollide()
     {
+        Instantiate(explosionPlayerPrefab, transform.position, transform.rotation);
+
         life--;
         asCollideRecently = true;
         ///Gameover
@@ -102,6 +106,7 @@ public class PlayerController : MonoBehaviour
             gameController.respawnPlayer();
         }
 
+        
         
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    public float movementSpeed = 0.1f;
+    public float movementSpeed = 0.05f;
 
     public float maxLifeTime = 2f;
     private float lifeTime = 0f;

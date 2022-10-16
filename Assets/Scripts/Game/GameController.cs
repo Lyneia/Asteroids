@@ -27,7 +27,7 @@ public class GameController : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
+    // Set Canva's text each frame 
     void Update()
     {
         scoreText.text=score.ToString();
@@ -46,9 +46,11 @@ public class GameController : MonoBehaviour
         livesText.text = textLives;
     }
 
+    /// <summary>
+    /// Set previous score, maxScore if need and load the menu scene
+    /// </summary>
     public void gameOver()
     {
-        Debug.Log("GameOver");
         if (PlayerPrefs.GetInt(maxScoreKey) < score)
         {
             PlayerPrefs.SetInt(maxScoreKey, score);
@@ -57,6 +59,9 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
     }
 
+    /// <summary>
+    /// Respawn player in the WrappingBox
+    /// </summary>
     public void respawnPlayer()
     {
         Vector3 spawnPoint = WrappingBox.createSpawnPointInWrappingBox();
@@ -64,6 +69,10 @@ public class GameController : MonoBehaviour
         player.GetComponent<PlayerController>().asCollideRecently = false;
     }
 
+    /// <summary>
+    /// Increased score depending of destroyed asteroid
+    /// </summary>
+    /// <param name="asteroidType"></param>
     public void increaseScore(EnumList.AsteroidsType asteroidType)
     {
         switch (asteroidType)

@@ -8,6 +8,8 @@ public class Asteroid : MonoBehaviour
 
     public AsteroidsSpawner asteroidSpawner;
 
+    public GameObject explosionAsteroidPrefab;
+
     /// <summary>
     /// Movement direction for the asteroid
     /// </summary>
@@ -86,6 +88,7 @@ public class Asteroid : MonoBehaviour
         }
         asteroidSpawner.numberOfAsteroid = asteroidSpawner.numberOfAsteroid - 1;
         gameController.increaseScore(asteroidType);
+        Instantiate(explosionAsteroidPrefab, transform.position, transform.rotation);
         Destroy(this.gameObject);
         
     }
