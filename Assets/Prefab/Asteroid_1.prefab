@@ -131,6 +131,7 @@ MonoBehaviour:
   rotationSpeed: 1.2
   minRotationSpeed: 50
   maxRotationSpeed: 150
+  gameController: {fileID: 0}
 --- !u!1001 &4361165703830331742
 PrefabInstance:
   m_ObjectHideFlags: 0
