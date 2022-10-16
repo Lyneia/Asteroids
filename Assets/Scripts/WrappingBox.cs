@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WrappingBox : MonoBehaviour
 {
-    public float xMin = -63f;
-    public float xMax = 63f;
-    public float yMin = -28f;
-    public float yMax = 28f;
+    public static float xMin = -55f;
+    public static float xMax = 55f;
+    public static float yMin = -30f;
+    public static float yMax = 30f;
 
     // Start is called before the first frame update
     void Start()
@@ -43,5 +43,10 @@ public class WrappingBox : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, yMin, transform.position.z);
         }
+    }
+
+    public static Vector3 createSpawnPointInWrappingBox()
+    {
+        return new Vector3(Random.Range(xMin, xMax), Random.Range(yMin, yMax), 0);
     }
 }

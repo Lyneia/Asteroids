@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5415124981151881720}
   - component: {fileID: 8154424504489923998}
   - component: {fileID: 8726106272905393326}
-  - component: {fileID: 116682645222657297}
   - component: {fileID: 1340109155924431987}
   - component: {fileID: 3252899317793794319}
+  - component: {fileID: 2647890941516106528}
   m_Layer: 0
   m_Name: Asteroid_2
   m_TagString: Asteroids
@@ -87,28 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &116682645222657297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6246079399741919425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 357a24daa4fcd004cb0eec3b79965a3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asteroidType: 2
-  asteroidSpawner: {fileID: 0}
-  movementSpeed: 0.02
-  minMovementSpeed: 5
-  maxMovementSpeed: 15
-  rotationSpeed: 1.2
-  minRotationSpeed: 10
-  maxRotationSpeed: 20
-  immunityTime: 0
-  immunityDuration: 2
 --- !u!114 &1340109155924431987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,10 +111,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82d9944657cc6f45a7b27967247fa48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: -63
-  xMax: 63
-  yMin: -28
-  yMax: 28
+--- !u!114 &2647890941516106528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6246079399741919425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7437f16ad60d3684c800b02022a1fc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidType: 2
+  asteroidSpawner: {fileID: 0}
+  movementSpeed: 0.02
+  minMovementSpeed: 5
+  maxMovementSpeed: 15
+  rotationSpeed: 1.2
+  minRotationSpeed: 50
+  maxRotationSpeed: 150
 --- !u!1001 &6737008163525724206
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,9 +5,9 @@ using UnityEngine;
 public class CollisionController : MonoBehaviour
 {
 
-    public GameObject[] asteroids;
-    public GameObject player;
-    public GameObject[] missiles;
+    private GameObject[] asteroids;
+    private GameObject player;
+    private GameObject[] missiles;
 
 
     /// <summary>
@@ -26,6 +26,7 @@ public class CollisionController : MonoBehaviour
     {
         asteroids = GameObject.FindGameObjectsWithTag("Asteroids");
         missiles = GameObject.FindGameObjectsWithTag("Missiles");
+        player = GameObject.FindGameObjectWithTag("Player");
 
         damageableObjects = new List<GameObject>();
         if (asteroids != null && asteroids.Length >= 1)
@@ -48,30 +49,78 @@ public class CollisionController : MonoBehaviour
             for (int j = 0; j < damageableObjects.Count; j++)
             {
                 //If the gameobject isn't himself
-                if (i != j)
+                if (i != j && damageableObjects[i] != null && damageableObjects[j] != null)
                 {
                     if (SeparatingAxisTheorem.CheckCollision(damageableObjects[i].GetComponent<CubeBoundingBox>(), damageableObjects[j].GetComponent<CubeBoundingBox>()))
                     {
+                        //Object 1 collision
                         if (damageableObjects[i].tag == "Asteroids")
+                        {
+                            if (damageableObjects[j].tag == "Asteroids" && damageableObjects[i].GetComponent<Asteroid>().canCollideWithAsteroid())
+                            {
+                                damageableObjects[i].GetComponent<Asteroid>().onCollide();
+                            }
+                            if ((damageableObjects[j].tag == "Player" || damageableObjects[j].tag == "Missiles") && damageableObjects[i].GetComponent<Asteroid>().canCollide())
+                            {
+                                damageableObjects[i].GetComponent<Asteroid>().onCollide();
+                            }
+                        }
+                        if (damageableObjects[i].tag == "Player")
                         {
                             if (damageableObjects[j].tag == "Asteroids")
                             {
-                                if (damageableObjects[i].GetComponent<Asteroids>().immunityTime > damageableObjects[i].GetComponent<Asteroids>().immunityDuration)
+                                if (damageableObjects[i].GetComponent<PlayerController>().canCollide())
                                 {
-                                    damageableObjects[i].GetComponent<Asteroids>().onCollide();
-                                }
-                            }
-                            if (damageableObjects[j].tag == "Asteroids")
-                            {
-                                if (damageableObjects[i].tag == "Asteroids")
-                                {
-                                    if (damageableObjects[j].GetComponent<Asteroids>().immunityTime > damageableObjects[j].GetComponent<Asteroids>().immunityDuration)
-                                    {
-                                        damageableObjects[j].GetComponent<Asteroids>().onCollide();
-                                    }
+                                    damageableObjects[i].GetComponent<PlayerController>().onCollide();
                                 }
                             }
                         }
+                        if (damageableObjects[i].tag == "Missiles")
+                        {
+                            if (damageableObjects[j].tag == "Asteroids")
+                            {
+                                if (damageableObjects[i].GetComponent<Missile>().canCollide())
+                                {
+                                    damageableObjects[i].GetComponent<Missile>().onCollide();
+                                }
+                            }
+                        }
+                        //
+
+                        //Object 2 collsion
+                        if (damageableObjects[j].tag == "Asteroids")
+                        {
+                            if (damageableObjects[i].tag == "Asteroids" && damageableObjects[j].GetComponent<Asteroid>().canCollideWithAsteroid())
+                            {
+                                damageableObjects[j].GetComponent<Asteroid>().onCollide();
+                                
+                            }
+                            if ((damageableObjects[i].tag == "Player" || damageableObjects[i].tag == "Missiles") && damageableObjects[j].GetComponent<Asteroid>().canCollide())
+                            {
+                                damageableObjects[j].GetComponent<Asteroid>().onCollide();
+                            }
+                        }
+                        if (damageableObjects[j].tag == "Player")
+                        {
+                            if (damageableObjects[i].tag == "Asteroids")
+                            {
+                                if (damageableObjects[j].GetComponent<PlayerController>().canCollide())
+                                {
+                                    damageableObjects[j].GetComponent<PlayerController>().onCollide();
+                                }
+                            }
+                        }
+                        if (damageableObjects[j].tag == "Missiles")
+                        {
+                            if (damageableObjects[i].tag == "Asteroids")
+                            {
+                                if (damageableObjects[j].GetComponent<Missile>().canCollide())
+                                {
+                                    damageableObjects[j].GetComponent<Missile>().onCollide();
+                                }
+                            }
+                        }
+                        //
                     }
 
                 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroids : MonoBehaviour
+public class Asteroid : MonoBehaviour
 {
     public EnumList.AsteroidsType asteroidType = EnumList.AsteroidsType.Major;
 
@@ -14,18 +14,23 @@ public class Asteroids : MonoBehaviour
     Vector3 direction;
 
     public float movementSpeed = 0.02f;
-    public float minMovementSpeed = 0.01f;
-    public float maxMovementSpeed = 0.06f;
+    public float minMovementSpeed = 5f;
+    public float maxMovementSpeed = 15f;
     public float rotationSpeed = 1.2f;
-    public float minRotationSpeed = 0.8f;
-    public float maxRotationSpeed = 2f;
+    public float minRotationSpeed = 50f;
+    public float maxRotationSpeed = 150f;
 
-    public float immunityTime = 0;
+    private float immunityTime = 0;
 
     /// <summary>
     /// Immunity duration used to move asteroids without collinding instantly after spawn
     /// </summary>
-    public float immunityDuration = 5f;
+    private float immunityDuration = 5f;
+
+    /// <summary>
+    /// Bool used to prevent object to collide 2 time in CollisionController
+    /// </summary>
+    private bool asCollideRecently = false;
 
     // Start is called before the first frame update
     void Start()
@@ -71,12 +76,28 @@ public class Asteroids : MonoBehaviour
     /// </summary>
     public void onCollide()
     {
+        asCollideRecently = true;
         if (asteroidType != EnumList.AsteroidsType.Minor)
         {
             asteroidSpawner.splitAsteroid(asteroidType, transform.position);
         }
-
+        asteroidSpawner.numberOfAsteroid = asteroidSpawner.numberOfAsteroid - 1;
         Destroy(this.gameObject);
         
+    }
+
+    public bool isImmuneToAsteroid()
+    {
+        return immunityTime < immunityDuration;
+    }
+
+    public bool canCollide()
+    {
+        return !asCollideRecently;
+    }
+
+    public bool canCollideWithAsteroid()
+    {
+        return !asCollideRecently && !isImmuneToAsteroid();
     }
 }

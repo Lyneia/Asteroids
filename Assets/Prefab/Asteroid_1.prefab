@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4361165702891855416}
   - component: {fileID: 4361165702891855415}
   - component: {fileID: 4361165702891855414}
-  - component: {fileID: 4361165702891855413}
   - component: {fileID: -4378495590769500313}
+  - component: {fileID: 5204836857991803929}
   m_Layer: 0
   m_Name: Asteroid_1
   m_TagString: Asteroids
@@ -99,28 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec46be44467b0c44b5a73f7fd2f8034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4361165702891855413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4361165702891855412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 357a24daa4fcd004cb0eec3b79965a3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  asteroidType: 2
-  asteroidSpawner: {fileID: 0}
-  movementSpeed: 0.02
-  minMovementSpeed: 5
-  maxMovementSpeed: 15
-  rotationSpeed: 1.2
-  minRotationSpeed: 10
-  maxRotationSpeed: 20
-  immunityTime: 0
-  immunityDuration: 2
 --- !u!114 &-4378495590769500313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,10 +111,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82d9944657cc6f45a7b27967247fa48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xMin: -63
-  xMax: 63
-  yMin: -28
-  yMax: 28
+--- !u!114 &5204836857991803929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4361165702891855412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7437f16ad60d3684c800b02022a1fc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidType: 2
+  asteroidSpawner: {fileID: 0}
+  movementSpeed: 0.02
+  minMovementSpeed: 5
+  maxMovementSpeed: 15
+  rotationSpeed: 1.2
+  minRotationSpeed: 50
+  maxRotationSpeed: 150
 --- !u!1001 &4361165703830331742
 PrefabInstance:
   m_ObjectHideFlags: 0

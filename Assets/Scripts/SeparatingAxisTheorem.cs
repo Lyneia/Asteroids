@@ -26,6 +26,9 @@ public class SeparatingAxisTheorem : MonoBehaviour
         Vector3[] axesA = boundingBoxA.GetAxes();
         Vector3[] axesB = boundingBoxB.GetAxes();
 
+
+        //All axes can be added dynamically, such as AllAxes = AxesFromA + AxesFromB + CrossProductOfAllAxesFromAAndB
+        //Since we are using cube it's manually done here
         Vector3[] allAxes = new Vector3[]
         {
             axesA[0],
