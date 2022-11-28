@@ -1,5 +1,5 @@
-# Cortopia Asteroids by Lyneia
-A Unity3D game made by Lyneia as work test for Beyond Frames & Cortopia.
+# Asteroids by Lyneia
+A Unity3D game made by Lyneia as work test for a game studio. The project was based on Asteroids (1979) and had to be made without Unity's Physics
 
 ## Description
 
